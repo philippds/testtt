@@ -19,11 +19,11 @@ if "pair_counter" not in st.session_state:
 if "choices" not in st.session_state:
     st.session_state.choices = []
 
-total_pairs = len(image_pairs)
-choices_made = len(st.session_state.choices)
-choices_remaining = total_pairs - st.session_state.pair_counter
+# recalculate choices_made based on pair_counter instead of length of choices
+choices_made = st.session_state.pair_counter
+choices_remaining = len(image_pairs) - st.session_state.pair_counter
 
-st.progress(st.session_state.pair_counter / total_pairs)
+st.progress(choices_made / len(image_pairs))
 st.write(f"You have made {choices_made} choices so far.")
 st.write(f"You have {choices_remaining} pairs left to view.")
 
@@ -32,7 +32,7 @@ if st.button("Start Over"):
     st.session_state.pair_counter = 0
     st.session_state.choices = []
 
-if st.session_state.pair_counter < total_pairs:
+if st.session_state.pair_counter < len(image_pairs):
     img1, img2 = image_pairs[st.session_state.pair_counter]
 
     col1, col2 = st.columns(2)
@@ -41,12 +41,14 @@ if st.session_state.pair_counter < total_pairs:
         if st.button("Select left image"):
             st.session_state.choices.append(img1)
             st.session_state.pair_counter += 1
+            st.experimental_rerun()
 
     with col2:
         st.image(img2, use_container_width=True)
         if st.button("Select right image"):
             st.session_state.choices.append(img2)
             st.session_state.pair_counter += 1
+            st.experimental_rerun()
 else:
     st.write("## Results after viewing pairs")
     scores = Counter(st.session_state.choices)
