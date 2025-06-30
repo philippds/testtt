@@ -2,9 +2,9 @@ import streamlit as st
 from collections import Counter
 
 image_pairs = [
-    ("https://placekitten.com/200/300", "https://placebear.com/200/300"),
-    ("https://placekitten.com/210/300", "https://placebear.com/210/300"),
-    ("https://placekitten.com/220/300", "https://placebear.com/220/300")
+    ("https://www.instagram.com/p/CxyzImage1/media/?size=l", "https://www.instagram.com/p/CabcImage2/media/?size=l"),
+    ("https://www.instagram.com/p/CdefImage3/media/?size=l", "https://www.instagram.com/p/CghiImage4/media/?size=l"),
+    ("https://www.instagram.com/p/CjklImage5/media/?size=l", "https://www.instagram.com/p/CmnoImage6/media/?size=l")
 ]
 
 if "pair_counter" not in st.session_state:
@@ -17,8 +17,6 @@ st.title("Image Pair Chooser")
 st.progress(st.session_state.pair_counter / len(image_pairs))
 
 if st.button("Start Over"):
-    st.session_state.pair_counter = 0
-    st.session_state.choices = []
     st.session_state.clear()
     st.session_state.pair_counter = 0
     st.session_state.choices = []
