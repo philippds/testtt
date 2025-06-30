@@ -2,15 +2,15 @@ import streamlit as st
 from collections import Counter
 
 image_pairs = [
-    ("https://scontent-fra3-1.cdninstagram.com/v/t51.2885-15/491445277_17875663539323055_2680152234481785204_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjExMjZ4MTQwOC5zZHIuZjc1NzYxLmRlZmF1bHRfaW1hZ2UifQ&_nc_ht=scontent-fra3-1.cdninstagram.com&_nc_cat=103&_nc_oc=Q6cZ2QEsUWnLbeJ2XwSkvFKeAOevEpZFGmNj4mQF9cgka14PXK6acnadjpJ3FA6525ST-4Y&_nc_ohc=n8G9YrAupXMQ7kNvwHq9Col&_nc_gid=xGFCLiWne_jlIv85t2xs9g&edm=AP4sbd4BAAAA&ccb=7-5&ig_cache_key=MzYxOTU0NDg3OTkxMDE0ODQ0MQ%3D%3D.3-ccb7-5&oh=00_AfMOTki86trwG42JaBetkfJn5-IfsLKxC8yLleAcSSw-Pw&oe=68685FA3&_nc_sid=7a9f4b",
-     "https://scontent-fra3-1.cdninstagram.com/v/t51.2885-15/491445277_17875663539323055_2680152234481785204_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjExMjZ4MTQwOC5zZHIuZjc1NzYxLmRlZmF1bHRfaW1hZ2UifQ&_nc_ht=scontent-fra3-1.cdninstagram.com&_nc_cat=103&_nc_oc=Q6cZ2QEsUWnLbeJ2XwSkvFKeAOevEpZFGmNj4mQF9cgka14PXK6acnadjpJ3FA6525ST-4Y&_nc_ohc=n8G9YrAupXMQ7kNvwHq9Col&_nc_gid=xGFCLiWne_jlIv85t2xs9g&edm=AP4sbd4BAAAA&ccb=7-5&ig_cache_key=MzYxOTU0NDg3OTkxMDE0ODQ0MQ%3D%3D.3-ccb7-5&oh=00_AfMOTki86trwG42JaBetkfJn5-IfsLKxC8yLleAcSSw-Pw&oe=68685FA3&_nc_sid=7a9f4b"
+    ("https://www.pedigree.in/files/styles/webp/public/2023-09/Puppy-Nutrition-Image-list.png.webp?VersionId=apbK1AhaKBfwIDQpd3.NcdR9egh41zrq&itok=RC0yZp5l",
+     "https://img.joomcdn.net/715c960d40c12669b2038bf00cd139b564c7548b_original.jpeg"
     ),
-    ("https://scontent-fra3-1.cdninstagram.com/v/t51.2885-15/491445277_17875663539323055_2680152234481785204_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjExMjZ4MTQwOC5zZHIuZjc1NzYxLmRlZmF1bHRfaW1hZ2UifQ&_nc_ht=scontent-fra3-1.cdninstagram.com&_nc_cat=103&_nc_oc=Q6cZ2QEsUWnLbeJ2XwSkvFKeAOevEpZFGmNj4mQF9cgka14PXK6acnadjpJ3FA6525ST-4Y&_nc_ohc=n8G9YrAupXMQ7kNvwHq9Col&_nc_gid=xGFCLiWne_jlIv85t2xs9g&edm=AP4sbd4BAAAA&ccb=7-5&ig_cache_key=MzYxOTU0NDg3OTkxMDE0ODQ0MQ%3D%3D.3-ccb7-5&oh=00_AfMOTki86trwG42JaBetkfJn5-IfsLKxC8yLleAcSSw-Pw&oe=68685FA3&_nc_sid=7a9f4b",
-     "https://scontent-fra3-1.cdninstagram.com/v/t51.2885-15/491445277_17875663539323055_2680152234481785204_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjExMjZ4MTQwOC5zZHIuZjc1NzYxLmRlZmF1bHRfaW1hZ2UifQ&_nc_ht=scontent-fra3-1.cdninstagram.com&_nc_cat=103&_nc_oc=Q6cZ2QEsUWnLbeJ2XwSkvFKeAOevEpZFGmNj4mQF9cgka14PXK6acnadjpJ3FA6525ST-4Y&_nc_ohc=n8G9YrAupXMQ7kNvwHq9Col&_nc_gid=xGFCLiWne_jlIv85t2xs9g&edm=AP4sbd4BAAAA&ccb=7-5&ig_cache_key=MzYxOTU0NDg3OTkxMDE0ODQ0MQ%3D%3D.3-ccb7-5&oh=00_AfMOTki86trwG42JaBetkfJn5-IfsLKxC8yLleAcSSw-Pw&oe=68685FA3&_nc_sid=7a9f4b"
+    ("https://www.pedigree.in/files/styles/webp/public/2023-09/Puppy-Nutrition-Image-list.png.webp?VersionId=apbK1AhaKBfwIDQpd3.NcdR9egh41zrq&itok=RC0yZp5l",
+     "https://img.joomcdn.net/715c960d40c12669b2038bf00cd139b564c7548b_original.jpeg"
     ),
-    ("https://scontent-fra3-1.cdninstagram.com/v/t51.2885-15/491445277_17875663539323055_2680152234481785204_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjExMjZ4MTQwOC5zZHIuZjc1NzYxLmRlZmF1bHRfaW1hZ2UifQ&_nc_ht=scontent-fra3-1.cdninstagram.com&_nc_cat=103&_nc_oc=Q6cZ2QEsUWnLbeJ2XwSkvFKeAOevEpZFGmNj4mQF9cgka14PXK6acnadjpJ3FA6525ST-4Y&_nc_ohc=n8G9YrAupXMQ7kNvwHq9Col&_nc_gid=xGFCLiWne_jlIv85t2xs9g&edm=AP4sbd4BAAAA&ccb=7-5&ig_cache_key=MzYxOTU0NDg3OTkxMDE0ODQ0MQ%3D%3D.3-ccb7-5&oh=00_AfMOTki86trwG42JaBetkfJn5-IfsLKxC8yLleAcSSw-Pw&oe=68685FA3&_nc_sid=7a9f4b",
-     "https://scontent-fra3-1.cdninstagram.com/v/t51.2885-15/491445277_17875663539323055_2680152234481785204_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQuaW1hZ2VfdXJsZ2VuLjExMjZ4MTQwOC5zZHIuZjc1NzYxLmRlZmF1bHRfaW1hZ2UifQ&_nc_ht=scontent-fra3-1.cdninstagram.com&_nc_cat=103&_nc_oc=Q6cZ2QEsUWnLbeJ2XwSkvFKeAOevEpZFGmNj4mQF9cgka14PXK6acnadjpJ3FA6525ST-4Y&_nc_ohc=n8G9YrAupXMQ7kNvwHq9Col&_nc_gid=xGFCLiWne_jlIv85t2xs9g&edm=AP4sbd4BAAAA&ccb=7-5&ig_cache_key=MzYxOTU0NDg3OTkxMDE0ODQ0MQ%3D%3D.3-ccb7-5&oh=00_AfMOTki86trwG42JaBetkfJn5-IfsLKxC8yLleAcSSw-Pw&oe=68685FA3&_nc_sid=7a9f4b"
-    )
+    ("https://www.pedigree.in/files/styles/webp/public/2023-09/Puppy-Nutrition-Image-list.png.webp?VersionId=apbK1AhaKBfwIDQpd3.NcdR9egh41zrq&itok=RC0yZp5l",
+     "https://img.joomcdn.net/715c960d40c12669b2038bf00cd139b564c7548b_original.jpeg"
+    ),
 ]
 
 if "pair_counter" not in st.session_state:
