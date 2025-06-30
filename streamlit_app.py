@@ -18,13 +18,16 @@ if "choices" not in st.session_state:
 
 st.title("Image Pair Chooser")
 
-def advance_state():
-    st.session_state.pair_counter += 1
+st.progress(st.session_state.pair_counter / 10.0)
 
-def reset_state():
+if st.button("Start Over"):
     st.session_state.pair_counter = 0
     st.session_state.shown_pairs = []
     st.session_state.choices = []
+    st.experimental_rerun()
+
+def advance_state():
+    st.session_state.pair_counter += 1
 
 if st.session_state.pair_counter < 10:
     while True:
@@ -50,4 +53,7 @@ else:
     scores = Counter(st.session_state.choices)
     st.bar_chart(scores)
     if st.button("Restart"):
-        reset_state()
+        st.session_state.pair_counter = 0
+        st.session_state.shown_pairs = []
+        st.session_state.choices = []
+        st.experimental_rerun()
