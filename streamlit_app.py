@@ -28,7 +28,6 @@ choices_remaining = total_pairs - st.session_state.pair_counter
 if not st.session_state.started:
     if st.button("Start"):
         st.session_state.started = True
-        st.experimental_rerun()
 else:
     st.progress(choices_made / total_pairs)
     st.write(f"You have made {choices_made} choices so far.")
@@ -39,7 +38,6 @@ else:
         st.session_state.pair_counter = 0
         st.session_state.choices = []
         st.session_state.started = False
-        st.experimental_rerun()
 
     if st.session_state.pair_counter < total_pairs:
         img1, img2 = image_pairs[st.session_state.pair_counter]
