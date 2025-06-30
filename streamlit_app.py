@@ -1,7 +1,6 @@
 import streamlit as st
 import random
 from collections import Counter
-import matplotlib.pyplot as plt
 
 all_images = [
     "https://placekitten.com/200/300",
@@ -49,11 +48,6 @@ if st.session_state.pair_counter < 10:
 else:
     st.write("## Results after 10 pairs")
     scores = Counter(st.session_state.choices)
-    fig, ax = plt.subplots()
-    ax.bar(scores.keys(), scores.values())
-    ax.set_ylabel("Number of times chosen")
-    ax.set_xlabel("Image")
-    ax.set_title("Image Choice Scores")
-    st.pyplot(fig)
+    st.bar_chart(scores)
     if st.button("Restart"):
         reset_state()
