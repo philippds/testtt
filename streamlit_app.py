@@ -1,7 +1,6 @@
 import streamlit as st
 from collections import Counter
 
-# define explicit pairs
 image_pairs = [
     ("https://placekitten.com/200/300", "https://placebear.com/200/300"),
     ("https://placekitten.com/210/300", "https://placebear.com/210/300"),
@@ -20,7 +19,9 @@ st.progress(st.session_state.pair_counter / len(image_pairs))
 if st.button("Start Over"):
     st.session_state.pair_counter = 0
     st.session_state.choices = []
-    st.experimental_rerun()
+    st.session_state.clear()
+    st.session_state.pair_counter = 0
+    st.session_state.choices = []
 
 if st.session_state.pair_counter < len(image_pairs):
     img1, img2 = image_pairs[st.session_state.pair_counter]
@@ -42,6 +43,6 @@ else:
     scores = Counter(st.session_state.choices)
     st.bar_chart(scores)
     if st.button("Restart"):
+        st.session_state.clear()
         st.session_state.pair_counter = 0
         st.session_state.choices = []
-        st.experimental_rerun()
